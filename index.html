@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html ng-app="kittieApp">
+	<head>
+
+		<title>Kitties App!</title>
+
+
+    <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+
+	</head>
+
+	<body ng-controller="KittiesController as kittiesCtrl" class="container" id="container">
+
+    <div class="row">
+      <div class="six columns">
+        <h3>Kitties for Adoption</h3>
+        <div ng-repeat="cat in kittiesCtrl.allKitties | filter:{adopted: false}">
+          <div class="dashed">
+            <p>My name is {{cat.catName}}</p>
+            <p>I am {{cat.monthsOld}} months old</p>
+            <p>I am a {{cat.gender}}</p>
+            <div>
+              <img ng-src="{{cat.image}}">
+            </div>
+            <div>
+              Adopt?
+              <input type="checkbox" ng-model="cat.adopted"></input>
+            </div>
+            <button ng-if="!cat.adopted" ng-click="kittiesCtrl.remove(cat)">delete</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="six columns">
+        <h3>Adopted Kitties</h3>
+        <div ng-repeat="cat in kittiesCtrl.allKitties | filter:{adopted: true}">
+          <div class="dashed">
+            <p>My name is {{cat.catName}}</p>
+            <p>I am {{cat.monthsOld}} months old</p>
+            <p>I am a {{cat.gender}}</p>
+            <div>
+              <img ng-src="{{cat.image}}">
+            </div>
+            <div>
+              Adopt?
+              <input type="checkbox" ng-model="cat.adopted"></input>
+            </div>
+            <button ng-if="!cat.adopted">delete</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Sourcing Angular-->
+    <script src="js/angular.min.js"></script>
+
+		<!-- Source in module -->
+    <script src="js/main.js"></script>
+
+		<!-- Source in controller -->
+    <script src="js/KittiesController.js"></script>
+
+	</body>
+</html>
