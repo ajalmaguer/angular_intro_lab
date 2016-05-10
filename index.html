@@ -16,6 +16,21 @@
 
     <div class="row">
       <div class="six columns">
+        <h3>Add Kitty</h3>
+        <form ng-submit="kittiesCtrl.addKittie()">
+          <input ng-model="kittiesCtrl.newKittie.catName" type="text" placeholder="Name"></input>
+          <input ng-model="kittiesCtrl.newKittie.monthsOld" type="text" placeholder="How many months?"></input>
+
+          <select ng-model="kittiesCtrl.newKittie.gender">
+            <option value="">Gender</option>
+            <option value="boy">boy</option>
+            <option value="girl">girl</option>
+          </select>
+
+          <input ng-model="kittiesCtrl.newKittie.image" type="text" placeholder="image"></input>
+          <input type="submit"></input>
+        </form>
+
         <h3>Kitties for Adoption</h3>
         <div ng-repeat="cat in kittiesCtrl.allKitties | filter:{adopted: false}">
           <div class="dashed">
